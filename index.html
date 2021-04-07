@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .pictures {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .btn {
+            margin-top: 10px;
+        }
+
+        #download {
+            display: none;
+        }
+
+        .modal-title {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">pictures</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">pictures</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="pictures" id="test"></div>
+
+
+                    </div>
+
+
+                    <div class="modal-footer">
+
+                        <button id="closeBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" id="download" class="btn btn-info btn-lg" data-toggle="modal"
+                            data-target="#myMod">Download</button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myMod" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Download</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="pictures" id="test2"></div>
+
+                                    </div>
+
+
+                                    <div class="modal-footer">
+
+                                        <button id="closeBtnDown" type="button" class="btn btn-default"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var response = {
+            0: { id: 0, title: "Title 1", link: "./img/image_menu5.png" },
+            1: { id: 0, title: "Title 1", link: "./img/image_menu5.png" },
+            3: { id: 0, title: "Title 1", link: "./img/image_menu5.png" },
+        }
+        for (i in response) {
+            document.getElementById("test").innerHTML += `<div class="col"><img src="` + response[i].link + `" alt= "photo"><p>` + response[i].title + `</p></div>`;
+        }
+        var response = {
+            0: { id: 0, title: "Title 1", link: "./img/image_menu5.png" },
+            1: { id: 0, title: "Title 1", link: "./img/image_menu5.png" },
+            3: { id: 0, title: "Title 1", link: "./img/image_menu5.png" },
+        }
+        for (i in response) {
+            document.getElementById("test2").innerHTML += `<div class="col"><img src="` + response[i].link + `" alt= "photo"><p>` + response[i].title + `</p></div>`;
+        }
+        var test = document.getElementsByClassName('col');
+        var test2 = document.getElementById('download');
+        for (i = 0; i < test.length; i++) {
+            test[i].addEventListener('click', function () {
+                for (x = 0; x < test.length; x++) {
+                    test2.style.display = "block";
+                }
+            });
+        }
+
+        document.getElementById('closeBtn').addEventListener('click', function () {
+            test2.style.display = "none";
+        })
+        document.getElementById('closeBtnDown').addEventListener('click', function () {
+            test2.style.display = "none";
+        })
+    </script>
+
+</body>
+
+</html>
